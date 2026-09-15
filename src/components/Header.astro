@@ -1,0 +1,19 @@
+---
+const path = Astro.url.pathname;
+const active = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+<header class="top">
+  <a class="brand" href="/" aria-label="Ótica Pantanal Premium, início">
+    <img class="brand-logo" src="/assets/logo-otica-pantanal.png" alt="" width="48" height="48" aria-hidden="true" />
+    <span><small>ÓTICA</small>PANTANAL<strong>PREMIUM</strong></span>
+  </a>
+  <button class="menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+  <nav id="main-nav" aria-label="Navegação principal">
+    <a href="/#oferta">Oferta</a>
+    <a href="/#beneficios">Por que escolher</a>
+    <a href="/conteudo" aria-current={active('/conteudo') ? 'page' : undefined}>Conteúdo</a>
+    <a href="/sobre-nos" aria-current={active('/sobre-nos') ? 'page' : undefined}>Sobre nós</a>
+    <a href="/contato" aria-current={active('/contato') ? 'page' : undefined}>Contato</a>
+    <a class="nav-cta wa" href="#" data-msg="Olá! Vim pelo site e gostaria de conhecer as opções de óculos.">Falar no WhatsApp</a>
+  </nav>
+</header>

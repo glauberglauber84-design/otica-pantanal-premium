@@ -1,0 +1,83 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  image = '/assets/fachada.jpeg',
+  type = 'website',
+  schema,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Optician',
+  name: 'Ótica Pantanal Premium',
+  url: Astro.site?.toString(),
+  telephone: '+55 67 99274-1393',
+  taxID: '64.038.019/0001-00',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rua da Integração, 572B',
+    addressLocality: 'Anastácio',
+    addressRegion: 'MS',
+    addressCountry: 'BR',
+  },
+};
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071b40" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/logo-otica-pantanal.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/logo-otica-pantanal.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema || defaultSchema)}></script>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <a class="whatsapp wa" href="#" aria-label="Falar com a Ótica Pantanal Premium no WhatsApp" data-msg="Olá! Vim pelo site da Ótica Pantanal Premium.">WhatsApp</a>
+    <script is:inline>
+      const phone = '5567992741393';
+      document.querySelectorAll('.wa').forEach((link) => {
+        link.href = `https://wa.me/${phone}?text=${encodeURIComponent(link.dataset.msg || 'Olá!')}`;
+        link.target = '_blank';
+        link.rel = 'noopener';
+      });
+      const menu = document.querySelector('.menu');
+      const nav = document.querySelector('#main-nav');
+      menu?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('open') || false;
+        menu.setAttribute('aria-expanded', String(open));
+      });
+      nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => nav.classList.remove('open')));
+    </script>
+  </body>
+</html>

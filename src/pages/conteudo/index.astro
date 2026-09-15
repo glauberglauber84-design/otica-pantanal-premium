@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const articles = (await getCollection('artigos')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Conteúdo sobre visão e óculos | Ótica Pantanal Premium" description="Artigos sobre óculos, lentes, armações e cuidados com a visão para toda a família.">
+  <main>
+    <section class="content-hero"><div class="inner"><span class="eyebrow" style="color:#f1ce78">Informação para cuidar melhor</span><h1>Conteúdo sobre visão,<br />óculos e bem-estar</h1><p>Guias simples para ajudar você a entender lentes, armações, cuidados e escolhas para toda a família. Informação não substitui consulta, mas ajuda a fazer melhores perguntas.</p></div></section>
+    <section class="content-main"><div class="article-grid">
+      {articles.map((article) => <article class="article-card"><span class="tag">{article.data.category}</span><h2>{article.data.title}</h2><p>{article.data.description}</p><a href={`/conteudo/${article.id}`}>Ler artigo completo →</a></article>)}
+    </div></section>
+  </main>
+</BaseLayout>

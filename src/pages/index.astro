@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Ótica Pantanal Premium | Óculos em Anastácio-MS" description="Óculos de grau, armações e atendimento humanizado em Anastácio-MS. Qualidade, conforto visual e preço justo para toda a família.">
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Sua ótica em Anastácio</span>
+        <h1>Enxergue bem.<br /><em>Sinta-se você.</em></h1>
+        <p>Óculos bonitos, confortáveis e com preço que cabe na sua realidade. Atendimento próximo para você e toda a família.</p>
+        <div class="actions">
+          <a class="btn primary wa" href="#" data-msg="Olá! Quero encontrar o óculos ideal para mim.">Escolher meu óculos</a>
+          <a class="btn secondary" href="#oferta">Ver oferta do mês</a>
+        </div>
+        <div class="trust"><span>✓ Atendimento personalizado</span><span>✓ Opções para todos os bolsos</span></div>
+      </div>
+      <div class="hero-visual">
+        <img src="/assets/oferta.jpeg" alt="Óculos completo em oferta na Ótica Pantanal Premium" width="1215" height="1600" fetchpriority="high" />
+        <div class="floating"><strong>R$ 349,00</strong><span>óculos completo*</span></div>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="Diferenciais"><div>Estilo</div><span>•</span><div>Conforto</div><span>•</span><div>Proteção</div><span>•</span><div>Preço justo</div></section>
+
+    <section class="offer" id="oferta">
+      <div class="offer-photo"><img src="/assets/oferta.jpeg" alt="Oferta do mês: armação Alma e lentes com antirreflexo e filtro azul" width="1215" height="1600" loading="lazy" /><span class="badge">Oferta do mês</span></div>
+      <div class="offer-copy">
+        <span class="eyebrow gold">Qualidade que você vê</span>
+        <h2>Óculos completo por <strong>R$ 349,00</strong></h2>
+        <p>Uma opção moderna, leve e confortável para cuidar da sua visão sem pesar no orçamento.</p>
+        <ul><li>Lentes com antirreflexo</li><li>Filtro azul</li><li>Armação Alma Eyewear</li><li>Conforto para o dia todo</li></ul>
+        <a class="btn primary wa" href="#" data-msg="Olá! Quero saber mais sobre o óculos completo por R$ 349,00.">Quero aproveitar a oferta</a>
+        <small>*Consulte condições, disponibilidade e graus participantes diretamente na loja.</small>
+      </div>
+    </section>
+
+    <section class="benefits" id="beneficios">
+      <span class="eyebrow">Para cada rosto, uma escolha</span>
+      <h2>Premium no cuidado.<br />Acessível no atendimento.</h2>
+      <div class="cards">
+        <article><span>01</span><h3>Para toda a família</h3><p>Modelos para diferentes idades, estilos e rotinas.</p></article>
+        <article><span>02</span><h3>Ajuda de verdade</h3><p>Orientação para escolher armação e lentes com segurança.</p></article>
+        <article><span>03</span><h3>Preço transparente</h3><p>Alternativas que respeitam o seu gosto e o seu orçamento.</p></article>
+      </div>
+    </section>
+
+    <section class="store" id="loja">
+      <div class="store-photo"><img src="/assets/fachada.jpeg" alt="Fachada azul e dourada da Ótica Pantanal Premium em Anastácio" width="1500" height="1000" loading="lazy" /></div>
+      <div class="store-copy">
+        <span class="eyebrow gold">Venha nos visitar</span><h2>Bem no Centro de Anastácio</h2>
+        <p>Atendimento acolhedor, escolha tranquila e cuidado em cada detalhe.</p>
+        <address><strong>Rua da Integração, 572B</strong><br />Centro — Anastácio/MS</address>
+        <div class="actions"><a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rua+da+Integra%C3%A7%C3%A3o+572B+Centro+Anast%C3%A1cio+MS">Como chegar</a><a class="btn secondary wa" href="#" data-msg="Olá! Gostaria de informações sobre o atendimento da loja.">Chamar no WhatsApp</a></div>
+      </div>
+    </section>
+
+    <section class="final-cta"><span>ÓTICA PANTANAL PREMIUM</span><h2>Sua visão merece o melhor.<br />E o melhor pode caber no seu bolso.</h2><a class="btn light wa" href="#" data-msg="Olá! Vim pelo site e quero conhecer as opções disponíveis.">Falar com a nossa equipe</a></section>
+  </main>
+</BaseLayout>

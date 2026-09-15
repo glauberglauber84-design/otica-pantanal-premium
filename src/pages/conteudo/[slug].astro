@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('artigos');
+  return articles.map((article) => ({ params: { slug: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.data.title,
+  description: article.data.description,
+  mainEntityOfPage: new URL(`/conteudo/${article.id}`, Astro.site).toString(),
+  author: { '@type': 'Organization', name: 'Ótica Pantanal Premium' },
+  publisher: { '@type': 'Organization', name: 'Ótica Pantanal Premium' },
+};
+---
+<BaseLayout title={`${article.data.title} | Ótica Pantanal Premium`} description={article.data.description} type="article" schema={schema}>
+  <main><article class="article-shell"><a class="back-content" href="/conteudo">← Voltar para Conteúdo</a><p class="article-meta">{article.data.category} · Leitura informativa · Ótica Pantanal Premium</p><h1>{article.data.title}</h1><p class="article-intro">{article.data.intro}</p><div class="article-body"><Content /></div></article></main>
+</BaseLayout>
